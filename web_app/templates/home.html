@@ -1,8 +1,47 @@
 {{define "home"}}
-<html>
+<!DOCTYPE html>
+<html lang="en">
     {{template "header"}}
     <body>
-        <h3>worked</h3>
+        <div class="home">
+            <div class="container">
+                <h3>Go Princing Web App</h3>
+                <div class="center">
+                    <img src="gopher.png" alt="Gopher image" style="width:20%;height:20%;" />
+                </div>
+                <div class="center mt-15">
+                    <button type="button" class="btn blue" onclick="showDetails('NEW-VERTICES')">New Yield Curve Vertices</button>
+                    <button type="button" class="btn green" onclick="showDetails('CURVE')">Search for Interpolated Yield Curve</button>
+                </div>
+                <div>
+                    <div id="div-new-vertices" class="center mt-15 display-none">
+                        <pre>NEW YIELD CURVE</pre>
+                    </div>
+                    <div id="div-curve" class="center mt-15 display-none">
+                        <pre>INTERPOLATED CURVES</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
+
+    <script>
+        function showDetails(sBlock) {
+            var dnv = document.getElementById("div-new-vertices");
+            var dc = document.getElementById("div-curve");
+            if (sBlock == 'NEW-VERTICES') {
+                dnv.classList.toggle('display-none');
+                if (!dc.classList.contains('display-none')) {
+                    dc.classList.toggle("display-none");
+                }
+            } else {
+                dc.classList.toggle('display-none');
+                if (!dnv.classList.contains('display-none')) {
+                    dnv.classList.toggle("display-none");
+                }
+            }
+        }
+    </script>
+
 </html>
 {{end}}
